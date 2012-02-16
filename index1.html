@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p>
+			djfklasjfkldjfajsklfdsf
+		</p>
+	<ul class="emphasis container">
+		<li>hello</li>
+		<li>hello1</li>
+		<li>hello2</li>
+		<li>hello3</li>
+		<li>hello4</li>
+		<li>
+		<ul>
+			<li>hello in the test</li>
+		</ul>
+		</li>
+	</ul>
+	</div>
+	<script src="jquery.js" type="text/javascript"></script>
+	<script>
+		
+		//$('ul.emphasis').children('li').eq(2).next().text('added with jQuery');
+		
+		console.log($('li').parent('.container'));
+	</script>
+</body>
+</html>
