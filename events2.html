@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>jquery Events 2</title>
+	<link media="all" rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+
+<dl>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7.</dd>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7.</dd>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7.</dd>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7.</dd>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7.</dd>
+</dl>
+
+	<script src="jquery.js" type="text/javascript"></script>
+	<script>
+	
+	(function(){
+	
+	
+	$('dd').filter(':nth-child(n+4)').hide(); //选择第四个以及之后的dd元素
+	
+	/*$('dt').on('mouseenter', function(){		此段与下边的效果相同
+		$(this)
+			.next()
+				.slideDown(200)
+					.siblings('dd')
+						.slideUp(200);
+
+	});*/
+	$('dl').on('mouseenter', 'dt', function(){	//当dl里的dt元素有鼠标进入事件时，执行如下函数
+		$(this)									//选择当前元素
+			.next()								//选择当前元素的下一个元素
+				.slideDown(200)					//使这个元素以200ms速度下滑显示
+					.siblings('dd')				//选择其余的dd元素
+						.slideUp(200);			//使元素以200ms的速度上升消失
+
+	});
+	})();
+
+	</script>
+</body>
+</html>

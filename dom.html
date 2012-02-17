@@ -10,7 +10,7 @@
 <body>
 	<div class="container">
 		<p>
-			djfklasjfkldjfajsklfdsf
+			First jQuery!
 		</p>
 	<ul class="emphasis container">
 		<li>hello</li>
@@ -28,9 +28,10 @@
 	<script src="jquery.js" type="text/javascript"></script>
 	<script>
 		
-		//$('ul.emphasis').children('li').eq(2).next().text('added with jQuery');
+		//$('ul.emphasis').children('li').eq(2).next().text('added with jQuery');		选择类为emphasis的ul的所有li孩子中的第三个,eq是从0开始计数的，然后选择下一个元素，把值改掉
 		
-		console.log($('li').parent('.container'));
+		console.log($('li').parent('.container'));	//控制台输出li的所有父元素中类为container的元素
+
 	</script>
 </body>
 </html>

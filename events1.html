@@ -16,17 +16,17 @@
 	<script>
 		
 		(function(){
-		var link = $('link');
+		var link = $('link');	//定义变量link，将选择结果赋予变量
 		$('button').click(function(){
-			var $this = $(this),
-				stylesheet = $this.data('file');
+			var $this = $(this),	//这个$this要带$应该是用来标记this是个变量
+				stylesheet = $this.data('file');	//将data-file的值赋给stylesheet
 
-			link.attr('href', stylesheet+'.css');
+			link.attr('href', stylesheet+'.css');	//改变link的css链接值
 			$this
 				.siblings('button')
 					.removeAttr('disabled')
-						.end()
-						.attr('disabled', 'disabled');
+						.end()						//回到$this元素
+						.attr('disabled', 'disabled');	//将其属性设为不可用
 		});
 		})();
 	</script>
