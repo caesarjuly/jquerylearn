@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Bind...Live...Delegate...On...Dang That's Confusing</title>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<div class="container">
+	<h2>Click Me</h2>
+	<h2>Click Me</h2>
+	<h2>Click Me</h2>
+	<h2>Click Me</h2>
+</div>
+
+
+	<script src="jquery.js" type="text/javascript"></script>
+	<script>
+		(function(){
+			
+			$('div.container').delegate('h2', 'click', function(){		//将事件委托给div.container，当有h2被点击时调用下面的函数
+				console.log('clicked');
+				$(this).clone().appendTo('.container');		//将获取到的内容复制并追加到.container里
+			});
+			/*
+			$('h2').live('click' ,function(){		//在根元素上绑定click事件，当有h2被点击时，追加到body里
+				console.log("clicked");
+				$(this).clone().appendTo('body');
+			});
+			*/
+
+			/*
+			$('h2').bind('click' ,function(){		//对所有h2绑定click事件，有点击时即触发函数
+				console.log("clicked");
+				$(this).clone(true).appendTo('body');	//对clone函数传参true表示对新加入的元素也绑定事件
+			});
+			*/
+		})();
+		
+
+	</script>
+</body>
+</html>
