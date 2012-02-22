@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Appending Content</title>
+	<style type="text/css">
+	article{
+		width: 600px;
+		margin:auto;
+	}
+	blockquote.co{
+		float: right;
+		background: #e3e3e3;
+		font-size:2em;
+		width: 25%;
+	}
+	</style>
+</head>
+<body>
+	<article>
+	<h1>My Awesome Post</h1>
+	<p>
+		Paragraph one!
+		Paragraph one!
+		Paragraph one!
+		Paragraph one!
+		Paragraph one!
+	</p>
+	<p>
+		Paragraph one!
+		Paragraph one!
+		Paragraph one!
+		Paragraph one!
+		Paragraph one!
+	<p>
+		<span class="co">Paragraph</span> two!
+	</p>
+	<p>
+		<span class="co">Hello 2</span>Paragraph one!
+		Paragraph one!
+		Paragraph one!
+		Paragraph one!
+		Paragraph one!
+	</p>
+	</article>
+	<script src="jquery.js" type="text/javascript"></script>
+	<script>
+
+	(function(){
+		//$('p').first().after('Hello from the Javascript');   第一个p元素后面添加这段话
+		/*$('<h2></h2>', {										将h2标签添加在第二个p元素之前
+			text: 'Hello from Javascript',						设置h2的内容和类
+			class: 'myClass'
+		}).insertBefore('p:nth-child(3)');
+		*/
+		/*$('p').first().after(function(){						第一个p元素后添加函数的返回值当前p元素的前一个元素
+			return $(this).prev();
+		});*/
+		
+		$('span.co').each(function(){							//为每个span.co执行函数将blockquote标签添加到当前span标签的最近一个p元素前
+			var $this = $(this);
+			$('<blockquote></blockquote>', {
+				class: 'co',
+				text: $this.text()
+			}).prependTo($this.closest('p'));
+		});
+	})();
+
+	</script>
+</body>
+</html>
