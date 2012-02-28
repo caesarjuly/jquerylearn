@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Slides and Structure</title>
+	<style>
+
+	body {
+		width: 600px;
+		margin: auto;
+		font-family: sans-serif;
+	}
+
+	#contact { 
+		background: #e3e3e3; 
+		padding: 1em 2em; 
+		position: relative;
+	}
+
+	.js #contact {
+		position: absolute;
+		top: 0;
+		width: inherit;
+		display: none;
+	}	
+
+	#contact h2 { margin-top: 0; }
+
+	#contact ul { padding: 0; }
+
+	#contact li { 
+		list-style: none;
+		margin-bottom: 1em;
+	}
+
+	/* Close button on form */
+	.close {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		font-weight: bold;
+		font-family: sans-serif;
+		cursor: pointer;
+	}	
+
+	/* Form inputs */
+	input, textarea { width: 100%; line-height: 2em;}
+	input[type=submit] { width: auto;  }
+	label { display: block; text-align: left; }
+
+	</style>
+</head>
+<body>
+
+
+<article>
+	<h1>My Awesome Post</h1>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	</p>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	</p>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	</p>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	</p>
+</article>
+
+<div id="contact">
+	<h2>Contact Me</h2>
+	<form action="#">
+		<ul>
+			<li>
+				<label for="name">Name: </label>
+	 			<input name="name" id="name">
+			</li>
+
+			<li>
+				<label for="email">Email Address: </label>
+		 		<input name="email" id="email">
+			</li>
+
+			<li>
+				<label for="comments">What's Up?</label>
+				<textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+			</li>
+			<li>
+				<input type="submit" value="Submit">
+			</li>
+		</ul>
+	</form>
+</div>
+
+<script src="jquery.js"></script>
+
+
+<script>
+
+(function() {
+	
+$('html').addClass('js');		//添加css，隐藏联系框
+
+var contactForm = {				//创建contactForm对象，此对象完成所有功能
+
+	container: $('#contact'),	//选择#contact为container属性
+
+	config: {					//创建配置属性
+		effect: 'slideToggle',
+		speed: 500
+	},
+
+	init: function(config) {	//创建初始化方法
+		$.extend(this.config, config);		//覆盖原有配置属性
+
+		$('<button></button>', {			//插入button绑定click事件
+			text: 'Contact Me'
+		})
+			.insertAfter( 'article:first' )
+			.on( 'click', this.show );
+	},
+
+	show: function() {						//点击button后触发此事件
+		var cf = contactForm,				//定义需要用到的属性，增加代码阅读性
+			container = cf.container,
+			config = cf.config;
+
+		if ( container.is(':hidden') ) {		//如果联系框被隐藏则触发以下代码
+			contactForm.close.call(container);		//调用close方法，传递当前对象为container
+			container[config.effect](config.speed);		//显示联系框
+		}
+	},
+
+	close: function() {
+		var $this = $(this), // #contact		//获取this对象
+			config = contactForm.config;
+
+		if ( $this.find('span.close').length ) return;		//如果有关闭按钮则返回
+
+		$('<span class=close>X</span>')		//插入关闭按钮，绑定click事件
+			.prependTo(this)
+			.on('click', function() {
+				// this = span
+				$this[config.effect](config.speed);
+			})
+	}
+};
+
+contactForm.init({		//初始化
+	// effect: 'fadeToggle',
+	speed: 300
+});
+
+})();
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
