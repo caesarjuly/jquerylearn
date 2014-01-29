@@ -4,4 +4,4 @@
 
 碰巧一直想好好学学github，正好一起学了，学以致用呗。
 
-有问题联系[我的博客](http://caesarjuly.h001.emorg.com/)，我一定回复的。
+有问题联系[我的博客](http://imakechoice.com/)，我一定回复的。
